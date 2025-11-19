@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Transparent Video Calculator</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: sans-serif;overflow: hidden;">
+  <center>
+    <p style="color: blue; font-size: 40px; font-weight: bold;">CALCULATOR</p>
+
+    <!-- Calculator Container -->
+    <div style="position: relative; width: 420px; height: 520px; margin: auto;">
+
+      <!-- Background Video -->
+      <video autoplay loop muted playsinline
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+        <source src="GT.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Calculator UI -->
+      <div style="position: relative; z-index: 1; padding: 10px;">
+        <input type="text" id="result"
+          style="width: 100%; height: 50px; font-size: 30px; text-align: right; margin-bottom: 10px;" disabled>
+
+        <!-- Button Grid -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+          <button onclick="appendValue('1')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">1</button>
+          <button onclick="appendValue('2')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">2</button>
+          <button onclick="appendValue('3')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">3</button>
+          <button onclick="appendValue('%')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">%</button>
+
+          <button onclick="appendValue('4')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">4</button>
+          <button onclick="appendValue('5')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">5</button>
+          <button onclick="appendValue('6')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">6</button>
+          <button onclick="appendValue('/')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">/</button>
+
+          <button onclick="appendValue('7')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">7</button>
+          <button onclick="appendValue('8')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">8</button>
+          <button onclick="appendValue('9')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">9</button>
+          <button onclick="appendValue('*')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">*</button>
+
+          <button onclick="appendValue('0')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">0</button>
+          <button onclick="calculateValue('ANS')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">ANS</button>
+          <button onclick="clearResult()" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">Clear</button>
+          <button onclick="appendValue('-')" style="height: 80px; font-size: 20px; font-weight: bold; background-color: transparent; color: white; border: 2px solid white;">-</button>
+        </div>
+      </div>
+    </div>
+  </center>
+
+  <!-- Calculator Script -->
+  <script>
+    function appendValue(val) {
+      document.getElementById("result").value += val;
+    }
+    function clearResult() {
+      document.getElementById("result").value = "";
+    }
+     function calculateValue() {
+    const resultField = document.getElementById("result");
+    try {
+    
+      const result = eval(resultField.value);
+      resultField.value = result;
+      lastAnswer = result; 
+    } catch (error) {
+      resultField.value = "Error";
+    }
+  }
+  </script>
+</body>
+</html>
